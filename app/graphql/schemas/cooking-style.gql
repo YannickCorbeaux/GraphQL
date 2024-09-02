@@ -1,0 +1,18 @@
+type CookingStyle {
+  id: Int
+  label: String
+  cookingStyleHasRestaurants: [CookingStyleHasRestaurant]
+}
+
+input CreateCookingStyle {
+  label: String!
+}
+
+input UpdateCookingStyle {
+  label: String
+}
+
+type CookingStyleHasRestaurant {
+  restaurant: Restaurant
+  #speciality: Boolean
+}

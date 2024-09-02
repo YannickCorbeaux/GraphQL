@@ -1,0 +1,25 @@
+# Une mutation est pratiquement identique à un Query, mais son exécution s'effectue en série plutôt qu'en paralèle. Ainsi on est garantie que les opération seront effectués dans le bon ordre.
+type Mutation {
+
+  # Afin de fournir de l'information supplémentaire a un utilisateur sur un point d'entrée particulier on peut écrire des commentaires utilisateurs avec les doubles guillemets
+  "Permet de créer un restaurant"
+  # Comme pour Joi, on defini que lors d'une création l'objet complet est requis
+  createRestaurant(data: CreateRestaurant!): Restaurant
+  # Si l'on souhaite écrire un commentaire long sur plusieurs lign e on peut utiliser les "triples" double guillement
+  """
+  Permet de modifier un restaurant
+  (Attention a l'id!)
+  """
+  updateRestaurant(id: Int!, data: UpdateRestaurant!): Restaurant
+  deleteRestaurant(id: Int!): Boolean
+
+  createCity(data: CreateCity!): City
+  updateCity(id: Int!, data: UpdateCity!): City
+
+  createCookingStyle(data: CreateCookingStyle!): CookingStyle
+  updateCookingStyle(id: Int!, data: UpdateCookingStyle!): CookingStyle
+  deleteRestaurantCookingStyle(restaurantId: Int!, cookingStyleId: Int!): Boolean
+
+  signup(data: CreateManager!): Manager
+
+}

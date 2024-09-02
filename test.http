@@ -1,0 +1,52 @@
+@endpoint=http://localhost:3000/
+
+## Exemple de requête GraphQL via REST Client
+POST {{endpoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query CookingStyle($cookingStyleId: Int!) {
+  cookingStyle(id: $cookingStyleId) {
+    label
+    cookingStyleHasRestaurants {
+      restaurant {
+        name
+      }
+    }
+  }
+}
+
+{
+  "cookingStyleId": 1
+}
+
+### Login
+# @name login
+POST {{endpoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+
+query connect($email: String!, $password: String!) {
+  signin(email: $email, password: $password) {
+    token
+    expiresAt
+  }
+}
+
+{
+  "email": "yann@oclock.io",
+  "password": "superpass"
+}
+
+### Profile
+POST {{endpoint}}
+Content-Type: application/json
+X-REQUEST-TYPE: GraphQL
+Authorization: Bearer {{login.response.body.data.signin.token}}
+
+query {
+  profile{
+    firstname
+    lastname
+  }
+}

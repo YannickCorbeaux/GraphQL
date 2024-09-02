@@ -1,0 +1,32 @@
+type Restaurant {
+  id: Int
+  name: String
+  description: String
+  terrace: Boolean
+  manager: Manager
+  city: City
+  restaurantHasCookingStyles: [RestaurantHasCookingStyle]
+}
+
+type RestaurantHasCookingStyle {
+  cookingStyle: CookingStyle
+  #speciality: Boolean
+}
+
+# Pour définir un type d'entrée on le dclare en tant qu'input
+# ici c'est un type pour l'insertion donc la majorité des informations sont obligatoires
+input CreateRestaurant{
+  name: String!
+  description: String!
+  terrace: Boolean!
+  manager_id: Int!
+  city_id: Int!
+}
+# Contrairement a une mise à jour où chaque information est optionnel
+input UpdateRestaurant{
+  name: String
+  description: String
+  terrace: Boolean
+  manager_id: Int
+  city_id: Int
+}

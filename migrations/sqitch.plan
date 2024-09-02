@@ -1,0 +1,4 @@
+%syntax-version=1.0.0
+%project=o-resto
+
+init 2022-04-22T09:46:08Z Yann Guilloux <yann@oclock.io> # initialisation de la bdd

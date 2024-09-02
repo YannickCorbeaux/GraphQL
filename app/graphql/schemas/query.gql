@@ -1,0 +1,18 @@
+# Le type "Query" est special, il est toujours présent et il défini les point d'entrées de récupération d'informations pour notre API
+type Query {
+  # Ce qu'il attendra c'est un tableau [] avec des objets dedans qui correspondent au type décrit plus haut
+  # [{title: 'LOTR', author: 'JRR Tolkien'}, {title: 'Foundation', author: 'Isaak Asimov'}]
+  restaurants: [Restaurant]!
+
+  # Afin de déclarer un point d'entrée pour ne récupérer qu'un seul restaurant, on peut définir que l'on doit fournir une information supplémentaire sous forme d'arg, que celui doit être de type entier et qu'il est obligatoire !
+  restaurant(id: Int!): Restaurant
+
+  cities: [City]
+  city(id: Int!): City
+
+  signin(email: String!, password: String!): Token
+  profile: Manager
+
+  cookingStyles: [CookingStyle]
+  cookingStyle(id: Int!): CookingStyle
+}

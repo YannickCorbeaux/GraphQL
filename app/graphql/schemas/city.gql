@@ -1,0 +1,36 @@
+type Geopos {
+  x: Float
+  y: Float
+}
+
+type Weather {
+  temperature: Float
+  sky: String
+  precipitation: Float
+}
+
+type City {
+  id: Int
+  name: String
+  postal_code: String
+  geopos: Geopos
+  weather: Weather
+  restaurants: [Restaurant]
+}
+
+input CreateGeopos {
+  x: Float!
+  y: Float!
+}
+
+input CreateCity {
+  name: String!
+  postal_code: String!
+  geopos: CreateGeopos!
+}
+
+input UpdateCity {
+  name: String
+  postal_code: String
+  geopos: CreateGeopos
+}
